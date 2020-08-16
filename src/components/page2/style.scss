@@ -79,6 +79,7 @@ $mobile-width: 992px;
     }
     .footer-logo {
       margin-bottom: 1rem;
+      padding-right:1rem ;
       @include isMobile() {
         width: 50%;
         margin-bottom: 0.5rem;

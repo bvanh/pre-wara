@@ -10,7 +10,8 @@ import {
   listBtnRules,
   listProgress,
 } from "./service";
-const Page1 = () => {
+const Page1 = (props) => {
+  const { scrollToPage2 } = props;
   const [currentMail, setCurrentMail] = useState(5000);
   const checkRw = (valMail, step) => {
     const isRwPass = valMail - step;
@@ -30,13 +31,17 @@ const Page1 = () => {
       </a>
     </Col>
   ));
-  const printBtnRule = listBtnRules.map((val) => (
+  const printBtnRule = listBtnRules.map((val, i) => (
     <Col
       span={val.id === 23 ? 4 : 3}
       lg={val.id === 23 ? { span: 3 } : { span: 2 }}
       key={val.id}
     >
-      <a href={val.link} target="_blank">
+      <a
+        href={val.link}
+        target="_blank"
+        onClick={() => (i === 2 ? scrollToPage2() : "")}
+      >
         <img src={imgPage1[val.src]} width="100%" />
       </a>
     </Col>
