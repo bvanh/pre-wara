@@ -1,0 +1,28 @@
+@import "~antd/dist/antd.css";
+$mobile-width: 992px;
+@mixin isMobile {
+  @media (max-width:#{$mobile-width}) {
+    @content;
+  }
+}
+.App {
+  background-image: url(../src/static/img/bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  div:first-child{
+    height: initial !important;
+  }
+  @include isMobile() {
+    // background: none;
+  }
+  .bg-mobile {
+    display: none;
+    @include isMobile() {
+      display: block !important;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

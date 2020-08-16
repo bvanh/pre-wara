@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PageBrowser from "./components/pageBrowser";
+import PageMobile from './components/pageMobile'
+import { withOrientationChange, isMobileOnly } from "react-device-detect";
+import { imgApp } from "./ultils/importImg";
+import "./App.scss";
 
-function App() {
+function App(props) {
+  const { isLandscape, isPortrait } = props;
+  if (isMobileOnly) {
+    if (isLandscape) {
+      return (
+        <div className="App">
+          {/* <img src={imgApp["bg.png"]} className="bg-mobile" /> */}
+          <PageBrowser />
+        </div>
+      );
+    }
+    if (isPortrait) {
+      return <div>The device is in Portrait mode</div>;
+    }
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <img src={imgApp["bg.png"]} className="bg-mobile" /> */}
+      <PageBrowser />
     </div>
   );
 }
-
+App = withOrientationChange(App);
 export default App;

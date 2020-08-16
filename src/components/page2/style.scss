@@ -1,0 +1,92 @@
+$medium-width: 1200px;
+$large-width: 1600px;
+$mobile-width: 992px;
+@mixin medium-width {
+  @media (min-width: #{$medium-width}) {
+    @content;
+  }
+}
+@mixin large-width {
+  @media (min-width: #{$large-width}) {
+    @content;
+  }
+}
+@mixin isMobile {
+  @media (max-width:#{$mobile-width}) {
+    @content;
+  }
+}
+.page2 {
+  margin: 15rem 0 10rem 0;
+  @include isMobile() {
+    margin: 5rem 0 1rem 0;
+  }
+  .btn-features {
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .btn-feature-header {
+    position: absolute;
+    top: -115px;
+    z-index: 0;
+    width: 120%;
+    left: -100px;
+    @include isMobile() {
+      top: -60px;
+      left: -50px;
+    }
+  }
+  .frame-feature {
+    position: absolute;
+    z-index: 1;
+    top: -20px;
+  }
+  .frame-feature-c {
+    position: absolute;
+    z-index: 1;
+    width: 25%;
+    top: 150px;
+    right: -130px;
+    @include isMobile() {
+      top: 75px;
+      right: -70px;
+    }
+  }
+  .img-feature {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    padding: 3% 2%;
+    @include medium-width() {
+      padding: 4% 2%;
+    }
+    @include large-width() {
+      padding: 5.1% 2%;
+    }
+  }
+}
+.footer {
+  .footer-container {
+    margin: 3rem 0 2rem 0;
+    @include isMobile() {
+      margin: 1rem 0 1rem 0;
+    }
+    p,
+    h3 {
+      color: white;
+      margin-bottom: 3px;
+    }
+    .footer-logo {
+      margin-bottom: 1rem;
+      @include isMobile() {
+        width: 50%;
+        margin-bottom: 0.5rem;
+        padding: 10px;
+      }
+      img:first-child {
+        margin-right: 1.5rem;
+      }
+    }
+  }
+}
