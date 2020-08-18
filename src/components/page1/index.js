@@ -15,7 +15,7 @@ import FormRegister from "./modal";
 const Page1 = (props) => {
   const { scrollToPage2, currentMail } = props;
   const [modalIndex, setModalIndex] = useState({
-    visible: true,
+    visible: false,
   });
   const offModal = () => {
     setModalIndex({ ...modalIndex, visible: false });
