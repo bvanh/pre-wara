@@ -3,6 +3,7 @@ import { Row, Col } from "antd";
 import { imgPage1, imgProgress } from "../../ultils/importImg";
 import { printPrBar } from "./service";
 import { CaretRightOutlined } from "@ant-design/icons";
+import FormResgister from "./modal";
 import "./style.scss";
 import {
   listBtnHeader,
@@ -10,9 +11,29 @@ import {
   listBtnRules,
   listProgress,
 } from "./service";
+import FormRegister from "./modal";
 const Page1 = (props) => {
-  const { scrollToPage2 } = props;
-  const [currentMail, setCurrentMail] = useState(5000);
+  const { scrollToPage2, currentMail } = props;
+  const [modalIndex, setModalIndex] = useState({
+    visible: true,
+  });
+  const offModal = () => {
+    setModalIndex({ ...modalIndex, visible: false });
+  };
+  const onModal = () => {
+    setModalIndex({ ...modalIndex, visible: true });
+  };
+  const triggerRule = (val) => {
+    switch (val) {
+      case 2:
+        scrollToPage2();
+        break;
+      case 1:
+        onModal();
+      default:
+        break;
+    }
+  };
   const checkRw = (valMail, step) => {
     const isRwPass = valMail - step;
     if (isRwPass <= 0) {
@@ -27,7 +48,7 @@ const Page1 = (props) => {
       key={val.id}
     >
       <a href={val.link} target="_blank">
-        <img src={imgPage1[val.name]} width="100%" />
+        <img src={imgPage1[val.name]} width="100%" alt={val.name} />
       </a>
     </Col>
   ));
@@ -37,11 +58,7 @@ const Page1 = (props) => {
       lg={val.id === 23 ? { span: 3 } : { span: 2 }}
       key={val.id}
     >
-      <a
-        href={val.link}
-        target="_blank"
-        onClick={() => (i === 2 ? scrollToPage2() : "")}
-      >
+      <a href={val.link} target="_blank" onClick={()=>triggerRule(i)}>
         <img src={imgPage1[val.src]} width="100%" />
       </a>
     </Col>
@@ -98,6 +115,7 @@ const Page1 = (props) => {
       <Row type="flex" justify="center" align="top" className="header">
         {printBtnRule}
       </Row>
+      <FormRegister modalIndex={modalIndex} offModal={offModal} />
     </div>
   );
 };
