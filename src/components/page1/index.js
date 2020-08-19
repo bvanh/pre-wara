@@ -123,7 +123,7 @@ const Page1 = (props) => {
           />
           <img src={imgPage1["logo_btn.png"]} className="logo" />
           <ReactPlayer
-            url="https://www.youtube.com/watch?v=1QNobXt9YZQ?controls=1"
+            url="https://www.youtube.com/watch?v=6KJrNWC0tfw?controls=1"
             width="70%"
             height="70%"
             controls={true}
