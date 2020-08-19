@@ -5,7 +5,7 @@ import { listFeature } from "./service";
 import { imgPage2 } from "../../ultils/importImg";
 import "./style.scss";
 const Page2 = () => {
-  const [isFeature, setIsFeature] = useState(39);
+  const [isFeature, setIsFeature] = useState(1);
   const printListFeature = listFeature.map((val) => (
     <a key={val.id} onClick={() => setIsFeature(val.id)}>
       <img
@@ -35,7 +35,7 @@ const Page2 = () => {
               width="100%"
               className="frame-feature"
             />
-            <img src={imgPage2['feature_1.png']} className='img-feature'/>
+            <img src={imgPage2[`feature_${isFeature}.png`]} className='img-feature'/>
             <img src={imgPage2['character_2.png']} className='frame-feature-c'/>
           </Col>
         </Row>

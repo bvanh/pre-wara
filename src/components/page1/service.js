@@ -6,9 +6,9 @@ const listBtnHeader = [
   { id: 4, name: "fan_btn.png", link: "" },
 ];
 const listTabMenu = [
-  { id: 12, link: "" },
-  { id: 13, link: "" },
-  { id: 14, link: "" },
+  { id: 12, link: "https://wara.clappigames.com" },
+  { id: 13, link: "https://clappigames.com/register" },
+  { id: 14, link: "https://www.facebook.com/WARAVN/" },
 ];
 const listBtnRules = [
   { id: 22, src: "rule_btn.png" },
