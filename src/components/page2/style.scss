@@ -58,8 +58,8 @@ $mobile-width: 992px;
     z-index: 0;
     width: 100%;
     padding: 3% 2%;
-    transition-duration: 500ms;
-    transition-delay: 500ms;
+    // transition-duration: 500ms;
+    // transition-delay: 500ms;
     @include medium-width() {
       padding: 4% 2%;
     }
