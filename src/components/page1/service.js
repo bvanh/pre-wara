@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { imgProgress } from "../../ultils/importImg";
 const listBtnHeader = [
   { id: 2, name: "dk_btn.png", link: "https://clappigames.com/register" },
@@ -119,4 +119,4 @@ const printPrBar = (currentMail, val, index) => {
     }
   }
 };
-export { listBtnHeader, listTabMenu, listBtnRules, listProgress,printPrBar };
+export { listBtnHeader, listTabMenu, listBtnRules, listProgress, printPrBar };
