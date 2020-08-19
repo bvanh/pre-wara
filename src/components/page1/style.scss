@@ -29,13 +29,41 @@ $mobile-width: 992px;
   }
   .section {
     position: relative;
-    .frame-video {
+    .video {
       position: relative;
+      .video{
+        position: absolute;
+        top: 25%;
+        left: 15%;
+        width: 70%;
+        div{
+          height: 100% !important;
+        }
+      }
+      .frame_video {
+        position: relative;
+        z-index: 1;
+      }
+      .bg_video {
+        position: absolute;
+        top: 25%;
+        left: 15%;
+        z-index: 0;
+        width: 70%;
+      }
+      .btn-play {
+        position: absolute;
+        z-index: 3;
+        left: 45%;
+        top: 45%;
+        width: 100px;
+      }
       .logo {
         position: absolute;
         left: -80px;
         top: -30px;
         width: 30%;
+        z-index: 1;
       }
     }
     .menu {
@@ -49,8 +77,8 @@ $mobile-width: 992px;
       background-size: cover;
       background-repeat: no-repeat;
       padding: 11.5rem 0 0 0;
-      @include medium-width-max(){
-       right: 2px;
+      @include medium-width-max() {
+        right: 2px;
       }
       @include isMobile() {
         width: 150px;
@@ -125,7 +153,7 @@ $mobile-width: 992px;
         justify-content: space-between;
         padding: 0 1rem 0 1rem;
         margin-right: 20px;
-        @include isMobile(){
+        @include isMobile() {
           margin-right: 16px;
         }
       }
@@ -146,16 +174,16 @@ $mobile-width: 992px;
       }
       .reward {
         width: 40px;
-        @include isMobile(){
+        @include isMobile() {
           width: 25px;
         }
       }
       .progress-step {
         height: 60px;
         width: 20px;
-        @include isMobile(){
+        @include isMobile() {
           height: 37px;
-    width: 12px;  
+          width: 12px;
         }
       }
       .text-regis {

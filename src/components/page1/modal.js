@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Input } from "antd";
 import { sendInfo } from "../../api/baseApi";
-import { validateEmail } from "../../ultils/validate";
+import { validateEmail, validatePhone } from "../../ultils/validate";
 const layout = {
   labelCol: {
     span: 6,
@@ -22,15 +22,16 @@ const FormRegister = (props) => {
   const [validateIndex, setValidateIndex] = useState({
     status: "",
     textHelp: null,
+    textSuccess: null,
   });
-  const { status, textHelp } = validateIndex;
+  const { status, textHelp, textSuccess } = validateIndex;
   const onFinish = (values) => {
-    const { mail } = values;
+    const { mail, phone } = values;
     if (validateEmail(mail)) {
-      sendInfo(values);
+      sendInfo(setValidateIndex, validateIndex, values);
+    } else {
+      setValidateIndex({ status: "error", textHelp: "Kiểm tra lại email !" });
     }
-    setValidateIndex({ status: "error", textHelp: "Kiểm tra lại email !" });
-    // console.log("Success:", values);
   };
   return (
     <>
@@ -54,9 +55,17 @@ const FormRegister = (props) => {
             validateStatus={status}
             help={textHelp}
           >
-            <Input />
+            <Input
+              onMouseDown={() =>
+                setValidateIndex({
+                  status: "",
+                  textHelp: null,
+                  textSuccess: null,
+                })
+              }
+            />
           </Form.Item>
-          <Form.Item label="Số điện thoại" name="phone">
+          <Form.Item label="Số điện thoại" name="phone" help={textSuccess}>
             <Input type="number" />
           </Form.Item>
           <Form.Item {...tailLayout}>

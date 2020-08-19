@@ -6,7 +6,7 @@ const baseApi = axios.create({
 });
 
 const getInfo = () => {
- return baseApi
+  return baseApi
     .get(api.GET_INFO)
     .then((response) => {
       return response.data;
@@ -15,14 +15,15 @@ const getInfo = () => {
       console.log(err);
     });
 };
-const sendInfo = (params) => {
- return baseApi
-    .post(api.SEND_MAIL, {...params })
+const sendInfo = (setValidateIndex, validateIndex, params) => {
+  return baseApi
+    .post(api.SEND_MAIL, { ...params })
     .then((res) => {
-      console.log(res);
+      setValidateIndex({ ...validateIndex, textSuccess: res.data.message });
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response);
+      setValidateIndex({ status: "error", textHelp: err.response.data.message });
     });
 };
 

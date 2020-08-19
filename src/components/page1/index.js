@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Row, Col } from "antd";
 import { imgPage1, imgProgress } from "../../ultils/importImg";
 import { printPrBar } from "./service";
+import ReactPlayer from "react-player";
 import { CaretRightOutlined } from "@ant-design/icons";
 import FormResgister from "./modal";
 import "./style.scss";
@@ -17,6 +18,11 @@ const Page1 = (props) => {
   const [modalIndex, setModalIndex] = useState({
     visible: false,
   });
+  const [videoIndex, setVideoIndex] = useState({
+    isRun: false,
+    show: "inital",
+  });
+  const { isRun, show } = videoIndex;
   const offModal = () => {
     setModalIndex({ ...modalIndex, visible: false });
   };
@@ -41,6 +47,9 @@ const Page1 = (props) => {
     }
     return false;
   };
+  const onPlayVideo = () => {
+    setVideoIndex({ ...videoIndex, isRun: !isRun });
+  };
   const printBtnHeader = listBtnHeader.map((val) => (
     <Col
       span={val.id === 3 ? 4 : 3}
@@ -58,7 +67,7 @@ const Page1 = (props) => {
       lg={val.id === 23 ? { span: 3 } : { span: 2 }}
       key={val.id}
     >
-      <a href={val.link} target="_blank" onClick={()=>triggerRule(i)}>
+      <a href={val.link} target="_blank" onClick={() => triggerRule(i)}>
         <img src={imgPage1[val.src]} width="100%" />
       </a>
     </Col>
@@ -98,10 +107,31 @@ const Page1 = (props) => {
           xl={{ span: 14 }}
           lg={{ span: 16 }}
           xxl={{ span: 12 }}
-          className="frame-video"
+          className="video"
         >
-          <img src={imgPage1["bg_video.png"]} width="100%" />
+          <img
+            src={imgPage1["frame_video.png"]}
+            width="100%"
+            className="frame_video"
+            onClick={onPlayVideo}
+          />
+          <img
+            src={imgPage1["bg_tv2.png"]}
+            width="100%"
+            className="bg_video"
+            style={isRun ? { zIndex: "-2" } : { zIndex: "0" }}
+          />
           <img src={imgPage1["logo_btn.png"]} className="logo" />
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=1QNobXt9YZQ?controls=1"
+            width="70%"
+            height="70%"
+            controls={true}
+            playing={isRun}
+            style={isRun ? { zIndex: "0" } : { zIndex: "-1" }}
+            className="video"
+            loop={true}
+          />
         </Col>
         <Col className="menu">{printListTabMn}</Col>
         {/* <div className="control-menu">
