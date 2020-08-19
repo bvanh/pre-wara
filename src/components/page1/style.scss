@@ -31,12 +31,12 @@ $mobile-width: 992px;
     position: relative;
     .video {
       position: relative;
-      .video{
+      .video {
         position: absolute;
         top: 25%;
         left: 15%;
         width: 70%;
-        div{
+        div {
           height: 100% !important;
         }
       }
@@ -190,6 +190,15 @@ $mobile-width: 992px;
         width: 100px;
         padding: 8px 0 0 1rem;
       }
+    }
+  }
+  .btn-rules {
+    position: relative;
+    .character-1 {
+      position: absolute;
+      right: 5%;
+      top: -180%;
+      width: 20%;
     }
   }
 }

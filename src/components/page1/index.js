@@ -142,8 +142,9 @@ const Page1 = (props) => {
           <img src={imgProgress["text_regis.png"]} className="text-regis" />
         </div>
       </Row>
-      <Row type="flex" justify="center" align="top" className="header">
+      <Row type="flex" justify="center" align="top" className="header btn-rules">
         {printBtnRule}
+        <img src={imgPage1['character_1.png']} className='character-1' alt='character-1'/>
       </Row>
       <FormRegister modalIndex={modalIndex} offModal={offModal} />
     </div>
