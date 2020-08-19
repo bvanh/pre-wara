@@ -68,7 +68,7 @@ const listProgress = [
   },
   {
     id: 1,
-    step: 1000,
+    step: 0,
     srcStep: "1",
     srcRw: "rw_false",
     srcRwPass: "rw_true",
