@@ -40,6 +40,7 @@ const FormRegister = (props) => {
         visible={visible}
         onOk={offModal}
         onCancel={offModal}
+        footer={false}
       >
         <Form
           {...layout}
@@ -66,7 +67,7 @@ const FormRegister = (props) => {
             />
           </Form.Item>
           <Form.Item label="Số điện thoại" name="phone" help={textSuccess}>
-            <Input type="number" />
+            <Input />
           </Form.Item>
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit">
