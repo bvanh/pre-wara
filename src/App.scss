@@ -13,6 +13,7 @@ $mobile-width: 992px;
   div:first-child{
     height: initial !important;
   }
+  overflow: hidden;
   @include isMobile() {
     // background: none;
   }

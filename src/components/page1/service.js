@@ -1,13 +1,13 @@
 import React from "react";
 import { imgProgress } from "../../ultils/importImg";
 const listBtnHeader = [
-  { id: 2, name: "dk_btn.png", link: "https://clappigames.com/register" },
+  { id: 2, name: "dk_btn.png", link: "https://clappigames.com/news" },
   { id: 3, name: "home_btn.png", link: "https://wara.clappigames.com/" },
   { id: 4, name: "fan_btn.png", link: "" },
 ];
 const listTabMenu = [
   { id: 12, link: "https://wara.clappigames.com" },
-  { id: 13, link: "https://clappigames.com/register" },
+  { id: 13, link: "https://clappigames.com/news" },
   { id: 14, link: "https://www.facebook.com/WARAVN/" },
 ];
 const listBtnRules = [

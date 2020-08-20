@@ -17,54 +17,59 @@ $mobile-width: 992px;
   }
 }
 .page2 {
-  margin: 15rem 0 10rem 0;
+  padding: 14.5rem 0 10rem 0;
   @include isMobile() {
-    margin: 5rem 0 1rem 0;
+    padding: 4.5rem 0 4rem 0;
   }
-  .btn-features {
-    width: 100%;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-  .btn-feature-header {
-    position: absolute;
-    top: -115px;
-    z-index: 0;
-    width: 120%;
-    left: -100px;
-    @include isMobile() {
-      top: -60px;
-      left: -50px;
-    }
-  }
-  .frame-feature {
-    position: absolute;
-    z-index: 1;
-    top: -20px;
-  }
-  .frame-feature-c {
-    position: absolute;
-    z-index: 1;
-    width: 25%;
-    top: 150px;
-    right: -130px;
-    @include isMobile() {
-      top: 75px;
-      right: -70px;
-    }
-  }
-  .img-feature {
-    position: absolute;
-    z-index: 0;
-    width: 100%;
-    padding: 3% 2%;
-    // transition-duration: 500ms;
-    // transition-delay: 500ms;
+  .page2-section {
     @include medium-width() {
-      padding: 4% 2%;
+      top: -100px;
     }
-    @include large-width() {
-      padding: 5.1% 2%;
+    .btn-features {
+      width: 100%;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .btn-feature-header {
+      position: absolute;
+      top: -115px;
+      z-index: 0;
+      width: 120%;
+      left: -100px;
+      @include isMobile() {
+        top: -60px;
+        left: -50px;
+      }
+    }
+    .frame-feature {
+      position: absolute;
+      z-index: 1;
+      top: -20px;
+    }
+    .frame-feature-c {
+      position: absolute;
+      z-index: 1;
+      width: 25%;
+      top: 150px;
+      right: -130px;
+      @include isMobile() {
+        top: 75px;
+        right: -70px;
+      }
+    }
+    .img-feature {
+      position: absolute;
+      z-index: 0;
+      width: 100%;
+      padding: 3% 2%;
+      // transition-duration: 500ms;
+      // transition-delay: 500ms;
+      @include medium-width() {
+        padding: 4% 2%;
+      }
+      @include large-width() {
+        padding: 5.1% 2%;
+      }
     }
   }
 }
@@ -81,9 +86,9 @@ $mobile-width: 992px;
     }
     .footer-logo {
       margin-bottom: 1rem;
-      padding-right:1rem ;
+      padding-right: 1rem;
       @include isMobile() {
-        width: 50%;
+        width: 40%;
         margin-bottom: 0.5rem;
         padding: 10px;
       }
