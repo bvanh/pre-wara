@@ -19,7 +19,7 @@ $mobile-width: 992px;
 .page2 {
   padding: 14.5rem 0 10rem 0;
   @include isMobile() {
-    padding: 4.5rem 0 4rem 0;
+    padding: 10.5rem 0 4rem 0;
   }
   .page2-section {
     @include medium-width() {

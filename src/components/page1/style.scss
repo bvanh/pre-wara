@@ -1,6 +1,7 @@
 $medium-width: 1200px;
 $large-width: 1600px;
 $mobile-width: 992px;
+$medium-width2: 1330px;
 @mixin medium-width {
   @media (min-width: #{$medium-width}) {
     @content;
@@ -8,6 +9,11 @@ $mobile-width: 992px;
 }
 @mixin medium-width-max {
   @media (max-width: #{$large-width}) {
+    @content;
+  }
+}
+@mixin medium-width-2 {
+  @media (max-width: #{$medium-width2}) {
     @content;
   }
 }
@@ -39,6 +45,12 @@ $mobile-width: 992px;
         height: 67%;
         overflow: hidden;
         @include medium-width-max() {
+          top: 39%;
+        }
+        @include medium-width-2() {
+          top: 45%;
+        }
+        @include isMobile() {
           top: 24%;
         }
         div:nth-child(1) {
@@ -51,6 +63,9 @@ $mobile-width: 992px;
         top: -9%;
         height: 98%;
         @include medium-width-max() {
+          top: 100px;
+        }
+        @include isMobile() {
           top: 0;
         }
       }
@@ -61,6 +76,9 @@ $mobile-width: 992px;
         z-index: 1;
         width: 69%;
         @include medium-width-max() {
+          top: 43%;
+        }
+        @include isMobile() {
           top: 25%;
         }
       }
@@ -77,7 +95,10 @@ $mobile-width: 992px;
         bottom: 26%;
         font-size: 30px;
         color: white;
-        @include medium-width-max(){
+        @include medium-width-max() {
+          bottom: 2%;
+        }
+        @include isMobile() {
           bottom: 18%;
         }
       }
@@ -189,7 +210,7 @@ $mobile-width: 992px;
     .hide-control-menu {
       transition-duration: 300ms;
       right: -20px;
-      @include medium-width(){
+      @include medium-width() {
         right: -30px;
         transition-duration: 500ms;
       }
@@ -263,7 +284,10 @@ $mobile-width: 992px;
     position: relative;
     top: -6.5rem;
     @include medium-width-max() {
-      top: 0;
+      top: 90px;
+    }
+    @include isMobile() {
+      top: 10px;
     }
     .character-1 {
       position: absolute;
