@@ -3,7 +3,7 @@ import { imgProgress } from "../../ultils/importImg";
 const listBtnHeader = [
   { id: 2, name: "dk_btn.png", link: "https://clappigames.com/news" },
   { id: 3, name: "home_btn.png", link: "https://wara.clappigames.com/" },
-  { id: 4, name: "fan_btn.png", link: "" },
+  { id: 4, name: "fan_btn.png", link: "https://www.facebook.com/WARAVN/" },
 ];
 const listTabMenu = [
   { id: 12, link: "https://wara.clappigames.com" },

@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import { imgPage1, imgProgress } from "../../ultils/importImg";
 import { printPrBar } from "./service";
 import ReactPlayer from "react-player";
-import { SoundOutlined } from "@ant-design/icons";
+import { SoundOutlined, CaretRightOutlined } from "@ant-design/icons";
 import FormResgister from "./modal";
 import "./style.scss";
 import {
@@ -23,6 +23,7 @@ const Page1 = (props) => {
     isMuted: false,
     show: "inital",
   });
+  const [showMenu, setShowMenu] = useState(true);
   const { isRun, show, isMuted } = videoIndex;
   const offModal = () => {
     setModalIndex({ ...modalIndex, visible: false });
@@ -118,7 +119,9 @@ const Page1 = (props) => {
         >
           <SoundOutlined
             className={`control-sound ${isMuted ? "sound-muted" : ""}`}
-            style={isRun ? { zIndex: "3" } : { zIndex: "1" }}
+            style={
+              isRun ? { zIndex: "3", userSelect: "none" } : { zIndex: "1" }
+            }
             onClick={() => setVideoIndex({ ...videoIndex, isMuted: !isMuted })}
           />
           <img
@@ -136,22 +139,28 @@ const Page1 = (props) => {
           <img src={imgPage1["logo_btn.png"]} className="logo" />
           <div className="video">
             <ReactPlayer
-              url="https://youtu.be/V6s1Mjj5zow?controls=1"
-              width="100%"
+              url="https://www.dailymotion.com/video/x7vpbhx"
+              width="101%"
               height="91%"
               muted={isMuted}
-              controls={true}
+              controls={false}
               playing={isRun}
+              onEnded={()=>setVideoIndex({ ...videoIndex, isRun: !isRun })}
               style={isRun ? { zIndex: "0" } : { zIndex: "-1" }}
               className="video-in"
-              loop={true}
             />
           </div>
         </Col>
-        <Col className="menu">{printListTabMn}</Col>
-        {/* <div className="control-menu">
-          <CaretRightOutlined className="icon-control-tab-menu" />
-        </div> */}
+        <Col className={`menu ${showMenu ? "" : "hide-menu"}`}>
+          <img src={imgPage1["menu-header.png"]} className="menu-header" />
+          {printListTabMn}
+        </Col>
+        <div className={`control-menu ${showMenu ? "" : "hide-control-menu"}`}>
+          <CaretRightOutlined
+            className="icon-control-tab-menu"
+            onClick={() => setShowMenu(!showMenu)}
+          />
+        </div>
         <div className="progress">
           {printProgress}
           <img src={imgProgress["text_regis.png"]} className="text-regis" />
