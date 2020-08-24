@@ -29,41 +29,92 @@ $mobile-width: 992px;
   }
   .section {
     position: relative;
-    .frame-video {
+    .video {
       position: relative;
+      .video {
+        position: absolute;
+        top: 13%;
+        left: 14.5%;
+        width: 70%;
+        height: 67%;
+        overflow: hidden;
+        @include medium-width-max() {
+          top: 23%;
+        }
+        div {
+          height: 100% !important;
+        }
+      }
+      .frame_video {
+        position: relative;
+        z-index: 2;
+        top: -10%;
+        @include medium-width-max() {
+          top: 0;
+        }
+      }
+      .bg_video {
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        z-index: 1;
+        width: 69%;
+        @include medium-width-max() {
+          top: 25%;
+        }
+      }
+      .btn-play {
+        position: absolute;
+        z-index: 3;
+        left: 45%;
+        top: 45%;
+        width: 100px;
+      }
+      .control-sound{
+        position: absolute;
+        right: 23%;
+        bottom: 26%;
+        font-size: 30px;
+        color: white;
+      }
+      .sound-muted{
+        color: #e45050;
+      }
       .logo {
         position: absolute;
-        left: -80px;
-        top: -30px;
-        width: 30%;
+        left: -25px;
+        top: -40px;
+        width: 25%;
+        z-index: 2;
       }
     }
     .menu {
-      width: 225px;
-      height: 400px;
-      position: absolute;
-      right: 100px;
-      z-index: 2;
-      background-image: url(../../static/img/page1/tab_mn.png);
+      width: 150px;
+      height: 240px;
+      right: 0;
+      padding: 6.5rem 0 0;
+      position: fixed;
+      z-index: 4;
+      background-image: url(../../static/img/tab_mn.png);
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      padding: 11.5rem 0 0 0;
-      @include medium-width-max(){
-       right: 2px;
+      top: 30px;
+      @include medium-width() {
+        width: 270px;
+        height: 430px;
+        right: 120px;
+        padding: 13rem 0 0 0;
       }
-      @include isMobile() {
-        width: 150px;
-        height: 240px;
-        right: 0;
-        padding: 6.5rem 0 0;
+      @include medium-width-max() {
+        right: 2px;
       }
       a {
-        height: 50px;
+        height: 35px;
         display: block;
         margin-bottom: 11px;
-        @include isMobile() {
-          height: 35px;
+        @include medium-width() {
+          height: 50px;
         }
       }
     }
@@ -110,13 +161,14 @@ $mobile-width: 992px;
       background-repeat: no-repeat;
       position: absolute;
       left: 0;
-      width: 225px;
-      height: 590px;
-      padding: 10rem 0 0 0;
-      @include isMobile() {
-        width: 155px;
-        height: 391px;
-        padding: 7rem 0 0;
+      width: 155px;
+      height: 391px;
+      padding: 7rem 0 0;
+      top: 10%;
+      @include medium-width() {
+        width: 225px;
+        height: 590px;
+        padding: 10rem 0 0 0;
       }
       .progress-container {
         display: flex;
@@ -125,7 +177,7 @@ $mobile-width: 992px;
         justify-content: space-between;
         padding: 0 1rem 0 1rem;
         margin-right: 20px;
-        @include isMobile(){
+        @include isMobile() {
           margin-right: 16px;
         }
       }
@@ -135,32 +187,50 @@ $mobile-width: 992px;
         background: #2d94ed;
       }
       .step {
-        width: 75px;
+        width: 45px;
         padding-right: 8px;
-        @include isMobile() {
-          width: 45px;
+        @include medium-width() {
+          width: 75px;
         }
       }
       .step-large {
         padding: 0;
       }
       .reward {
-        width: 40px;
-        @include isMobile(){
-          width: 25px;
+        width: 25px;
+        @include medium-width() {
+          width: 40px;
         }
       }
       .progress-step {
-        height: 60px;
-        width: 20px;
-        @include isMobile(){
-          height: 37px;
-    width: 12px;  
+        height: 37px;
+        width: 12px;
+        @include medium-width() {
+          height: 60px;
+          width: 20px;
         }
       }
       .text-regis {
         width: 100px;
         padding: 8px 0 0 1rem;
+      }
+    }
+  }
+  .btn-rules {
+    position: relative;
+    top: -6.5rem;
+    @include medium-width-max() {
+      top: 0;
+    }
+    .character-1 {
+      position: absolute;
+      right: -4%;
+      top: -315%;
+      width: 500px;
+      z-index: 2;
+      @include medium-width-max() {
+        right: 0%;
+        width: 25%;
       }
     }
   }

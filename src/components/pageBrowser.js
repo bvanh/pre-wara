@@ -13,9 +13,9 @@ const PageBrowser = () => {
     inputEl.current.scrollToSlide(1);
   };
   useEffect(() => {
-    // getInfo().then((res) => {
-    //   setCurrretMail(res.currentMail);
-    // });
+    getInfo().then((res) => {
+      // setCurrretMail(res.currentMail);
+    });
   }, []);
   return (
     <div className="Page-container">

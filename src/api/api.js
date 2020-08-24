@@ -1,5 +1,5 @@
 const api = {
-  ROOT: "localhost:5005",
+  ROOT: "https://api.pre.wara.lussom.vn",
   GET_INFO: "/info",
   SEND_MAIL: "/create",
 };

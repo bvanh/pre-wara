@@ -1,14 +1,14 @@
 import React from "react";
 import { imgProgress } from "../../ultils/importImg";
 const listBtnHeader = [
-  { id: 2, name: "dk_btn.png", link: "https://clappigames.com/register" },
+  { id: 2, name: "dk_btn.png", link: "https://clappigames.com/news" },
   { id: 3, name: "home_btn.png", link: "https://wara.clappigames.com/" },
   { id: 4, name: "fan_btn.png", link: "" },
 ];
 const listTabMenu = [
-  { id: 12, link: "" },
-  { id: 13, link: "" },
-  { id: 14, link: "" },
+  { id: 12, link: "https://wara.clappigames.com" },
+  { id: 13, link: "https://clappigames.com/news" },
+  { id: 14, link: "https://www.facebook.com/WARAVN/" },
 ];
 const listBtnRules = [
   { id: 22, src: "rule_btn.png" },
@@ -68,7 +68,7 @@ const listProgress = [
   },
   {
     id: 1,
-    step: 1000,
+    step: 0,
     srcStep: "1",
     srcRw: "rw_false",
     srcRwPass: "rw_true",
@@ -96,26 +96,51 @@ const printPrBar = (currentMail, val, index) => {
     }
   }
   if (index !== 0) {
-    if (currentMail < val.step) {
-      return (
-        <img
-          src={imgProgress[`${val.srcPrEmtry}.png`]}
-          className="progress-step"
-        />
-      );
-    }
-    if (currentMail >= val.step && currentMail < listProgress[index - 1].step) {
-      return (
-        <img src={imgProgress[`${val.srcPr}.png`]} className="progress-step" />
-      );
-    }
-    if (currentMail >= listProgress[index - 1].step) {
-      return (
-        <img
-          src={imgProgress[`${val.srcPrPass}.png`]}
-          className="progress-step"
-        />
-      );
+    if (index === 5) {
+      if (currentMail >= 0 && currentMail < listProgress[index - 1].step) {
+        return (
+          <img
+            src={imgProgress[`${val.srcPr}.png`]}
+            className="progress-step"
+          />
+        );
+      }
+      if (currentMail >= listProgress[index - 1].step) {
+        return (
+          <img
+            src={imgProgress[`${val.srcPrPass}.png`]}
+            className="progress-step"
+          />
+        );
+      }
+    } else {
+      if (currentMail < val.step) {
+        return (
+          <img
+            src={imgProgress[`${val.srcPrEmtry}.png`]}
+            className="progress-step"
+          />
+        );
+      }
+      if (
+        currentMail >= val.step &&
+        currentMail < listProgress[index - 1].step
+      ) {
+        return (
+          <img
+            src={imgProgress[`${val.srcPr}.png`]}
+            className="progress-step"
+          />
+        );
+      }
+      if (currentMail >= listProgress[index - 1].step) {
+        return (
+          <img
+            src={imgProgress[`${val.srcPrPass}.png`]}
+            className="progress-step"
+          />
+        );
+      }
     }
   }
 };

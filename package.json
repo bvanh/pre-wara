@@ -11,9 +11,11 @@
     "axios": "^0.19.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-device-detect": "^1.13.1",
     "react-dom": "^16.13.1",
     "react-full-page": "^0.1.11",
+    "react-player": "^2.6.0",
     "react-scripts": "3.4.3",
     "surge": "^0.21.6"
   },
@@ -29,6 +31,7 @@
   "browserslist": {
     "production": [
       ">0.2%",
+      "ie >= 9",
       "not dead",
       "not op_mini all"
     ],
