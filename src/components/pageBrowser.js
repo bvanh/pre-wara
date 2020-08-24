@@ -14,7 +14,7 @@ const PageBrowser = () => {
   };
   useEffect(() => {
     getInfo().then((res) => {
-      // setCurrretMail(res.currentMail);
+      setCurrretMail(res.currentMail);
     });
   }, []);
   return (

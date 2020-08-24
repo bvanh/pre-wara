@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Row, Col } from "antd";
-import { imgPage1, imgProgress } from "../../ultils/importImg";
-import { printPrBar } from "./service";
+import {
+  imgPage1,
+  imgProgress,
+  imgPopup,
+  imgRewards,
+} from "../../ultils/importImg";
 import ReactPlayer from "react-player";
-import { SoundOutlined } from "@ant-design/icons";
+import { SoundOutlined, CaretRightOutlined } from "@ant-design/icons";
 import FormResgister from "./modal";
 import "./style.scss";
 import {
@@ -11,24 +15,31 @@ import {
   listTabMenu,
   listBtnRules,
   listProgress,
+  printPrBar,
+  listPopup,
 } from "./service";
 import FormRegister from "./modal";
+
+const { REGISTER, RULE } = listPopup;
 const Page1 = (props) => {
   const { scrollToPage2, currentMail } = props;
   const [modalIndex, setModalIndex] = useState({
     visible: false,
+    typePopup: RULE,
   });
   const [videoIndex, setVideoIndex] = useState({
     isRun: false,
     isMuted: false,
     show: "inital",
   });
+  const [showMenu, setShowMenu] = useState(true);
+  const [stepRw, setStepRw] = useState(null);
   const { isRun, show, isMuted } = videoIndex;
   const offModal = () => {
     setModalIndex({ ...modalIndex, visible: false });
   };
-  const onModal = () => {
-    setModalIndex({ ...modalIndex, visible: true });
+  const onModal = (val) => {
+    setModalIndex({ ...modalIndex, visible: true, typePopup: val });
   };
   const triggerRule = (val) => {
     switch (val) {
@@ -36,8 +47,10 @@ const Page1 = (props) => {
         scrollToPage2();
         break;
       case 1:
-        onModal();
+        onModal(REGISTER);
+        break;
       default:
+        onModal(RULE);
         break;
     }
   };
@@ -83,21 +96,63 @@ const Page1 = (props) => {
           src={imgProgress[`${val.srcStep}_register.png`]}
           className={`step ${val.step > 8000 ? "step-large" : ""}`}
         />
-        <img
-          src={
-            imgProgress[
-              `${
-                checkRw(currentMail, val.step) ? val.srcRw : val.srcRwPass
-              }.png`
-            ]
-          }
-          className="reward"
-        />
+        <div className="reward">
+          <img
+            src={
+              imgProgress[
+                `${
+                  checkRw(currentMail, val.step) ? val.srcRw : val.srcRwPass
+                }.png`
+              ]
+            }
+            onMouseOver={() => setStepRw(val.id)}
+            onMouseLeave={()=>setStepRw(null)}
+            width="100%"
+          />
+          <div
+            className="step-rewards"
+            style={stepRw === val.id ? { zIndex: 9 } : { zIndex: -1 }}
+          >
+            <img
+              src={imgPopup["bg_popup.png"]}
+              className={`step-bg ${val.step > 8000 ? "step-bg-large" : ""}`}
+            />
+            <img
+              src={imgPopup["step.png"]}
+              width="100%"
+              className="step-title"
+            />
+            <table>
+              <tr>
+                <th>Email</th>
+                <th>Gold</th>
+                <th>Ruby</th>
+              </tr>
+              <tr>
+                <td>{val.step}</td>
+                <td>
+                  {val.gold}K x{" "}
+                  <img
+                    src={imgRewards[`purchases_coin_${val.id}.png`]}
+                    width="50%"
+                  />
+                </td>
+                <td>
+                  {val.ruby} x{" "}
+                  <img
+                    src={imgRewards[`purchases_cash_${val.id}.png`]}
+                    width="50%"
+                  />
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
         {printPrBar(currentMail, val, index)}
       </div>
     );
   });
-  console.log(currentMail)
+  // console.log(currentMail)
   return (
     <div className="page1">
       <Row
@@ -119,7 +174,9 @@ const Page1 = (props) => {
         >
           <SoundOutlined
             className={`control-sound ${isMuted ? "sound-muted" : ""}`}
-            style={isRun ? { zIndex: "3" } : { zIndex: "1" }}
+            style={
+              isRun ? { zIndex: "3", userSelect: "none" } : { zIndex: "1" }
+            }
             onClick={() => setVideoIndex({ ...videoIndex, isMuted: !isMuted })}
           />
           <img
@@ -137,22 +194,28 @@ const Page1 = (props) => {
           <img src={imgPage1["logo_btn.png"]} className="logo" />
           <div className="video">
             <ReactPlayer
-              url="https://youtu.be/V6s1Mjj5zow?controls=1"
-              width="100%"
+              url="https://dai.ly/x7vpbhx"
+              width="101%"
               height="91%"
               muted={isMuted}
-              controls={true}
+              controls={false}
               playing={isRun}
+              onEnded={() => setVideoIndex({ ...videoIndex, isRun: !isRun })}
               style={isRun ? { zIndex: "0" } : { zIndex: "-1" }}
               className="video-in"
-              loop={true}
             />
           </div>
         </Col>
-        <Col className="menu">{printListTabMn}</Col>
-        {/* <div className="control-menu">
-          <CaretRightOutlined className="icon-control-tab-menu" />
-        </div> */}
+        <Col className={`menu ${showMenu ? "" : "hide-menu"}`}>
+          <img src={imgPage1["menu-header.png"]} className="menu-header" />
+          {printListTabMn}
+        </Col>
+        <div className={`control-menu ${showMenu ? "" : "hide-control-menu"}`}>
+          <CaretRightOutlined
+            className="icon-control-tab-menu"
+            onClick={() => setShowMenu(!showMenu)}
+          />
+        </div>
         <div className="progress">
           {printProgress}
           <img src={imgProgress["text_regis.png"]} className="text-regis" />

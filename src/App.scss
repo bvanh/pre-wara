@@ -15,7 +15,7 @@ $mobile-width: 992px;
   }
   overflow: hidden;
   @include isMobile() {
-    // background: none;
+    background-size: inherit;
   }
   .bg-mobile {
     display: none;

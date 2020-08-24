@@ -1,9 +1,14 @@
 import React from "react";
 import { imgProgress } from "../../ultils/importImg";
+const listPopup = {
+  REGISTER: "register",
+  STEP: "step",
+  RULE: "rule",
+};
 const listBtnHeader = [
   { id: 2, name: "dk_btn.png", link: "https://clappigames.com/news" },
   { id: 3, name: "home_btn.png", link: "https://wara.clappigames.com/" },
-  { id: 4, name: "fan_btn.png", link: "" },
+  { id: 4, name: "fan_btn.png", link: "https://www.facebook.com/WARAVN/" },
 ];
 const listTabMenu = [
   { id: 12, link: "https://wara.clappigames.com" },
@@ -18,7 +23,9 @@ const listBtnRules = [
 const listProgress = [
   {
     id: 6,
-    step: 10001,
+    gold: 200,
+    ruby: 150,
+    step: 10101,
     srcStep: "11",
     srcRw: "rw_false",
     srcRwPass: "rw_true",
@@ -28,6 +35,8 @@ const listProgress = [
   },
   {
     id: 5,
+    gold: 200,
+    ruby: 50,
     step: 10000,
     srcStep: "10",
     srcRw: "rw_false",
@@ -38,6 +47,8 @@ const listProgress = [
   },
   {
     id: 4,
+    gold: 100,
+    ruby: 25,
     step: 8000,
     srcStep: "8",
     srcRw: "rw_false",
@@ -48,6 +59,8 @@ const listProgress = [
   },
   {
     id: 3,
+    gold: 100,
+    ruby: 25,
     step: 5000,
     srcStep: "5",
     srcRw: "rw_false",
@@ -58,6 +71,8 @@ const listProgress = [
   },
   {
     id: 2,
+    gold: 100,
+    ruby: 25,
     step: 2000,
     srcStep: "2",
     srcRw: "rw_false",
@@ -68,6 +83,8 @@ const listProgress = [
   },
   {
     id: 1,
+    gold: 100,
+    ruby: 25,
     step: 0,
     srcStep: "1",
     srcRw: "rw_false",
@@ -144,4 +161,11 @@ const printPrBar = (currentMail, val, index) => {
     }
   }
 };
-export { listBtnHeader, listTabMenu, listBtnRules, listProgress, printPrBar };
+export {
+  listBtnHeader,
+  listTabMenu,
+  listBtnRules,
+  listProgress,
+  printPrBar,
+  listPopup,
+};

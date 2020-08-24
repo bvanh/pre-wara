@@ -1,6 +1,7 @@
 $medium-width: 1200px;
 $large-width: 1600px;
 $mobile-width: 992px;
+$medium-width2: 1330px;
 @mixin medium-width {
   @media (min-width: #{$medium-width}) {
     @content;
@@ -8,6 +9,11 @@ $mobile-width: 992px;
 }
 @mixin medium-width-max {
   @media (max-width: #{$large-width}) {
+    @content;
+  }
+}
+@mixin medium-width-2 {
+  @media (max-width: #{$medium-width2}) {
     @content;
   }
 }
@@ -33,23 +39,33 @@ $mobile-width: 992px;
       position: relative;
       .video {
         position: absolute;
-        top: 13%;
-        left: 14.5%;
-        width: 70%;
+        top: 15%;
+        left: 16%;
+        width: 68%;
         height: 67%;
         overflow: hidden;
         @include medium-width-max() {
-          top: 23%;
+          top: 39%;
         }
-        div {
-          height: 100% !important;
+        @include medium-width-2() {
+          top: 45%;
+        }
+        @include isMobile() {
+          top: 24%;
+        }
+        div:nth-child(1) {
+          height: 97% !important;
         }
       }
       .frame_video {
         position: relative;
         z-index: 2;
-        top: -10%;
+        top: -9%;
+        height: 98%;
         @include medium-width-max() {
+          top: 100px;
+        }
+        @include isMobile() {
           top: 0;
         }
       }
@@ -60,6 +76,9 @@ $mobile-width: 992px;
         z-index: 1;
         width: 69%;
         @include medium-width-max() {
+          top: 43%;
+        }
+        @include isMobile() {
           top: 25%;
         }
       }
@@ -70,14 +89,20 @@ $mobile-width: 992px;
         top: 45%;
         width: 100px;
       }
-      .control-sound{
+      .control-sound {
         position: absolute;
         right: 23%;
         bottom: 26%;
         font-size: 30px;
         color: white;
+        @include medium-width-max() {
+          bottom: 2%;
+        }
+        @include isMobile() {
+          bottom: 18%;
+        }
       }
-      .sound-muted{
+      .sound-muted {
         color: #e45050;
       }
       .logo {
@@ -89,69 +114,108 @@ $mobile-width: 992px;
       }
     }
     .menu {
-      width: 150px;
-      height: 240px;
+      width: 155px;
+      height: 180px;
       right: 0;
       padding: 6.5rem 0 0;
       position: fixed;
-      z-index: 4;
-      background-image: url(../../static/img/tab_mn.png);
+      z-index: 7;
+      background-image: url(../../static/img/page1/tab_mn.png);
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      top: 30px;
+      top: 140px;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: center;
+      transition-duration: 500ms;
       @include medium-width() {
-        width: 270px;
-        height: 430px;
-        right: 120px;
-        padding: 13rem 0 0 0;
+        width: 230px;
+        height: 275px;
+        right: 40px;
+        padding: 4rem 0 0 0;
       }
       @include medium-width-max() {
         right: 2px;
+      }
+      .menu-header {
+        width: 100%;
+        position: absolute;
+        top: -75px;
+        @include medium-width() {
+          top: -100px;
+        }
       }
       a {
         height: 35px;
         display: block;
         margin-bottom: 11px;
+        width: 80%;
         @include medium-width() {
           height: 50px;
         }
       }
     }
+    .hide-menu {
+      right: -230px;
+    }
     .control-menu {
-      width: 85px;
-      height: 110px;
-      position: absolute;
-      right: 300px;
-      top: 150px;
-      z-index: 1;
+      width: 65px;
+      height: 90px;
+      position: fixed;
+      right: 127px;
+      top: 185px;
+      z-index: 6;
       background-image: url(../../static/img/page1/push_tab_btn.png);
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      @include isMobile() {
-        width: 55px;
-        height: 75px;
-        right: 120px;
-        top: 90px;
+      transition-duration: 500ms;
+      @include medium-width() {
+        width: 75px;
+        height: 105px;
+        right: 190px;
       }
+      @include large-width() {
+        right: 230px;
+        top: 225px;
+      }
+      // @include isMobile() {
+      //   width: 55px;
+      //   height: 75px;
+      //   right: 120px;
+      //   top: 90px;
+      // }
       .icon-control-tab-menu {
         svg {
           width: 100%;
           height: 100%;
         }
-        height: 85%;
+        height: 81%;
         color: white;
         top: 10px;
         position: relative;
-        width: 50px;
-        left: 15px;
-        @include isMobile() {
-          height: 40%;
-          top: 23px;
-          width: 40px;
-          left: 3px;
-        }
+        width: 40px;
+        left: 10px;
+        z-index: 12;
+        // @include isMobile() {
+        //   height: 40%;
+        //   top: 23px;
+        //   width: 40px;
+        //   left: 3px;
+        // }
+      }
+    }
+    .hide-control-menu {
+      transition-duration: 300ms;
+      right: -20px;
+      @include medium-width() {
+        right: -30px;
+        transition-duration: 500ms;
+      }
+      .icon-control-tab-menu {
+        transform: rotateY(-180deg);
       }
     }
     .progress {
@@ -198,6 +262,8 @@ $mobile-width: 992px;
       }
       .reward {
         width: 25px;
+        position: relative;
+        cursor: pointer;
         @include medium-width() {
           width: 40px;
         }
@@ -215,12 +281,50 @@ $mobile-width: 992px;
         padding: 8px 0 0 1rem;
       }
     }
+    .step-rewards {
+      position: absolute;
+      top: -45px;
+      width: 315px;
+      left: 90px;
+      .step-bg {
+        width: 100%;
+        height: 160px;
+      }
+      .step-bg-large {
+        height: 180px;
+      }
+      .step-title {
+        width: 50%;
+        top: -10%;
+        position: absolute;
+        left: 26%;
+      }
+      table {
+        position: absolute;
+        top: 40px;
+        color: white;
+        width: 92%;
+        left: 4%;
+      }
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        text-align: center;
+      }
+    }
   }
   .btn-rules {
     position: relative;
     top: -6.5rem;
     @include medium-width-max() {
-      top: 0;
+      top: 90px;
+    }
+    @include isMobile() {
+      top: 10px;
     }
     .character-1 {
       position: absolute;
@@ -231,6 +335,68 @@ $mobile-width: 992px;
       @include medium-width-max() {
         right: 0%;
         width: 25%;
+      }
+    }
+  }
+}
+.popup-container {
+  padding: 0 !important;
+  .bg-popup-register {
+    width: 100%;
+    height: 345px;
+  }
+  .bg-popup-rule {
+    width: 100%;
+    height: 420px;
+  }
+  div {
+    background-color: transparent;
+    .ant-modal-close-x {
+      color: white;
+    }
+    .ant-modal-body {
+      padding: 0;
+      .title-popup-register {
+        position: absolute;
+        width: 40%;
+        left: 30%;
+        top: -7%;
+      }
+      .title-popup-rule {
+        position: absolute;
+        width: 40%;
+        left: 30%;
+        top: -6%;
+      }
+      form {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 20% 3rem;
+        .ant-form-item-label {
+          text-align: start;
+          label {
+            color: white;
+          }
+        }
+        .ant-form-item-explain {
+          // color: #ff4d4f;
+          // margin: 7px 0;
+        }
+        .ant-btn-primary {
+          background: #2076b7;
+          border-color: #2076b7;
+        }
+      }
+      .popup-rule {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 10% 3rem;
+        p {
+          margin-bottom: 0.5rem;
+          color: white;
+        }
       }
     }
   }
