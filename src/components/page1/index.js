@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col } from "antd";
 import { imgPage1, imgProgress } from "../../ultils/importImg";
-import { printPrBar } from "./service";
 import ReactPlayer from "react-player";
 import { SoundOutlined, CaretRightOutlined } from "@ant-design/icons";
 import FormResgister from "./modal";
@@ -11,12 +10,17 @@ import {
   listTabMenu,
   listBtnRules,
   listProgress,
+  printPrBar,
+  listPopup,
 } from "./service";
 import FormRegister from "./modal";
+
+const { REGISTER,RULE } = listPopup;
 const Page1 = (props) => {
   const { scrollToPage2, currentMail } = props;
   const [modalIndex, setModalIndex] = useState({
-    visible: false,
+    visible: true,
+    typePopup: RULE,
   });
   const [videoIndex, setVideoIndex] = useState({
     isRun: false,
@@ -28,8 +32,8 @@ const Page1 = (props) => {
   const offModal = () => {
     setModalIndex({ ...modalIndex, visible: false });
   };
-  const onModal = () => {
-    setModalIndex({ ...modalIndex, visible: true });
+  const onModal = (val) => {
+    setModalIndex({ ...modalIndex, visible: true, typePopup: val });
   };
   const triggerRule = (val) => {
     switch (val) {
@@ -37,8 +41,10 @@ const Page1 = (props) => {
         scrollToPage2();
         break;
       case 1:
-        onModal();
+        onModal(REGISTER);
+        break
       default:
+        onModal(RULE);
         break;
     }
   };
@@ -139,13 +145,13 @@ const Page1 = (props) => {
           <img src={imgPage1["logo_btn.png"]} className="logo" />
           <div className="video">
             <ReactPlayer
-              url="https://www.dailymotion.com/video/x7vpbhx"
+              url="https://dai.ly/x7vpbhx"
               width="101%"
               height="91%"
               muted={isMuted}
               controls={false}
               playing={isRun}
-              onEnded={()=>setVideoIndex({ ...videoIndex, isRun: !isRun })}
+              onEnded={() => setVideoIndex({ ...videoIndex, isRun: !isRun })}
               style={isRun ? { zIndex: "0" } : { zIndex: "-1" }}
               className="video-in"
             />

@@ -1,5 +1,10 @@
 import React from "react";
 import { imgProgress } from "../../ultils/importImg";
+const listPopup = {
+  REGISTER: "register",
+  STEP: "step",
+  RULE: "rule",
+};
 const listBtnHeader = [
   { id: 2, name: "dk_btn.png", link: "https://clappigames.com/news" },
   { id: 3, name: "home_btn.png", link: "https://wara.clappigames.com/" },
@@ -144,4 +149,11 @@ const printPrBar = (currentMail, val, index) => {
     }
   }
 };
-export { listBtnHeader, listTabMenu, listBtnRules, listProgress, printPrBar };
+export {
+  listBtnHeader,
+  listTabMenu,
+  listBtnRules,
+  listProgress,
+  printPrBar,
+  listPopup,
+};

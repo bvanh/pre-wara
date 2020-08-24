@@ -12,10 +12,13 @@ const imgPage1 = importAll(
 const imgProgress = importAll(
   require.context("../static/img/page1/progress", false, /\.(png|jpe?g|svg)$/)
 );
+const imgPopup = importAll(
+  require.context("../static/img/page1/popup", false, /\.(png|jpe?g|svg)$/)
+);
 const imgPage2 = importAll(
   require.context("../static/img/page2", false, /\.(png|jpe?g|svg)$/)
 );
 const imgApp = importAll(
   require.context("../static/img", false, /\.(png|jpe?g|svg)$/)
 );
-export { imgPage1, imgPage2, imgApp, imgProgress };
+export { imgPage1, imgPage2, imgApp, imgProgress, imgPopup };
