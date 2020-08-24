@@ -74,6 +74,7 @@ $mobile-width: 992px;
   }
 }
 .footer {
+  background: #252525;
   .footer-container {
     margin: 3rem 0 2rem 0;
     @include isMobile() {
