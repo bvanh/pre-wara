@@ -117,7 +117,7 @@ $medium-width2: 1330px;
         top: -40px;
         width: 25%;
         z-index: 2;
-        @include isMobileSmall(){
+        @include isMobile(){
           top: 0;
           left: 0;
         }
