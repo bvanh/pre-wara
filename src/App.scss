@@ -10,7 +10,7 @@ $mobile-width: 992px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  div:first-child{
+  div:first-child {
     height: initial !important;
   }
   overflow: hidden;
@@ -27,8 +27,34 @@ $mobile-width: 992px;
     }
   }
 }
-.alert-rotate{
-  position: absolute;
-  top: 30%;
-  left: 10px;
+.bg-rotate {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: black;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  .alert-rotate {
+    // position: absolute;
+    // top: 30%;
+    // left: 10px;
+    color: white;
+    margin-top: 2rem;
+  }
+  .rotate-phone {
+    transform-origin: 50% 50% 0px;
+    animation: rotate 2s ease 0s infinite normal none running;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  49% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
 }
