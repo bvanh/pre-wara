@@ -124,28 +124,32 @@ const Page1 = (props) => {
               className="step-title"
             />
             <table>
-              <tr>
-                <th>Email</th>
-                <th>Gold</th>
-                <th>Ruby</th>
-              </tr>
-              <tr>
-                <td>{val.step === 0 ? 1000 : val.step}</td>
-                <td>
-                  {val.gold}K x{" "}
-                  <img
-                    src={imgRewards[`purchases_coin_${val.id}.png`]}
-                    width="50%"
-                  />
-                </td>
-                <td>
-                  {val.ruby} x{" "}
-                  <img
-                    src={imgRewards[`purchases_cash_${val.id}.png`]}
-                    width="50%"
-                  />
-                </td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Gold</th>
+                  <th>Ruby</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{val.step === 0 ? 1000 : val.step}</td>
+                  <td>
+                    {val.gold}K x{" "}
+                    <img
+                      src={imgRewards[`purchases_coin_${val.id}.png`]}
+                      width="50%"
+                    />
+                  </td>
+                  <td>
+                    {val.ruby} x{" "}
+                    <img
+                      src={imgRewards[`purchases_cash_${val.id}.png`]}
+                      width="50%"
+                    />
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>

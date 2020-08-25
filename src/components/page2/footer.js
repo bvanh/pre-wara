@@ -33,8 +33,8 @@ const Footer = () => {
               height="80"
               // style={{}}
               scrolling="no"
-              frameborder="0"
-              allowTransparency="true"
+              frameBorder="0"
+              allowtransparency="true"
               allow="encrypted-media"
               data-show-facepile="true"
             ></iframe>
