@@ -117,7 +117,11 @@ $medium-width2: 1330px;
         top: -40px;
         width: 25%;
         z-index: 2;
-        @include isMobile(){
+        @include medium-width-max() {
+          top: 15%;
+          left: 0;
+        }
+        @include isMobile() {
           top: 0;
           left: 0;
         }
