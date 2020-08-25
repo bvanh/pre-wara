@@ -4,7 +4,7 @@ import { sendInfo } from "../../api/baseApi";
 import { validateEmail, validatePhone } from "../../ultils/validate";
 import { imgPopup } from "../../ultils/importImg";
 import { listPopup } from "./service";
-const { REGISTER, RULE } = listPopup;
+const { REGISTER, RULE,} = listPopup;
 const layout = {
   labelCol: {
     span: 6,
@@ -21,20 +21,61 @@ const tailLayout = {
 };
 const FormRegister = (props) => {
   const { visible, typePopup } = props.modalIndex;
-  const { offModal } = props;
+  const { offModal, setModalIndex, modalIndex } = props;
   const [validateIndex, setValidateIndex] = useState({
     status: "",
+    warningStatus: "warning",
     textHelp: null,
-    textSuccess: null,
+    textHelpPhone: "Không bắt buộc!",
   });
-  const { status, textHelp, textSuccess } = validateIndex;
+  const { status, textHelp, textHelpPhone, warningStatus } = validateIndex;
   const onFinish = (values) => {
     const { mail, phone } = values;
-    if (validateEmail(mail)) {
-      sendInfo(setValidateIndex, validateIndex, values);
+    if (phone && phone !== "") {
+      if (validatePhone(phone)) {
+        if (validateEmail(mail)) {
+          sendInfo(
+            setValidateIndex,
+            validateIndex,
+            values,
+            setModalIndex,
+            modalIndex,
+            offModal
+          );
+        } else {
+          alertErrEmail();
+        }
+      } else {
+        alertErrPhone();
+      }
     } else {
-      setValidateIndex({ status: "error", textHelp: "Kiểm tra lại email !" });
+      if (validateEmail(mail)) {
+        sendInfo(
+          setValidateIndex,
+          validateIndex,
+          values,
+          setModalIndex,
+          modalIndex,
+          offModal
+        );
+      } else {
+        alertErrEmail();
+      }
     }
+  };
+  const alertErrPhone = () => {
+    setValidateIndex({
+      ...validateIndex,
+      warningStatus: "error",
+      textHelpPhone: "Kiểm tra lại số điện thoại !",
+    });
+  };
+  const alertErrEmail = () => {
+    setValidateIndex({
+      ...validateIndex,
+      status: "error",
+      textHelp: "Kiểm tra lại email !",
+    });
   };
   const printPopup = () => {
     switch (typePopup) {
@@ -53,20 +94,34 @@ const FormRegister = (props) => {
               name="mail"
               validateStatus={status}
               help={textHelp}
-              style={{paddingBottom:'.5rem'}}
+              style={{ paddingBottom: ".5rem" }}
             >
               <Input
                 onMouseDown={() =>
                   setValidateIndex({
+                    ...validateIndex,
                     status: "",
                     textHelp: null,
-                    textSuccess: null,
                   })
                 }
               />
             </Form.Item>
-            <Form.Item label="Số điện thoại" name="phone" help={textSuccess} style={{paddingBottom:'.5rem'}}>
-              <Input />
+            <Form.Item
+              label="Số điện thoại"
+              name="phone"
+              help={textHelpPhone}
+              validateStatus={warningStatus}
+              style={{ paddingBottom: ".5rem" }}
+            >
+              <Input
+                onMouseDown={() =>
+                  setValidateIndex({
+                    ...validateIndex,
+                    warningStatus: "",
+                    textHelpPhone: null,
+                  })
+                }
+              />
             </Form.Item>
             <Form.Item {...tailLayout}>
               <Button type="primary" htmlType="submit">
@@ -78,13 +133,10 @@ const FormRegister = (props) => {
 
       case RULE:
         return (
-          <div className='popup-rule'>
+          <div className="popup-rule">
             <p>Hướng dẫn đăng ký sớm nhận quà :</p>
             <p>- Bước 1 : Click vào ô ĐĂNG KÝ SỚM tại trang web</p>
-            <p>
-              {" "}
-              - Bước 2 : Điền Email và Số điện thoại theo yêu cầu tại đó
-            </p>
+            <p> - Bước 2 : Điền Email và Số điện thoại theo yêu cầu tại đó</p>
             <p>- Bước 3 : Click "Gửi"</p>
             <br />
             <p>
@@ -106,6 +158,9 @@ const FormRegister = (props) => {
           </div>
         );
       default:
+        return(
+        <h2 className='alert-success'>Gửi thông tin thành công!</h2>
+        )
         break;
     }
   };
@@ -118,9 +173,16 @@ const FormRegister = (props) => {
         onCancel={offModal}
         footer={false}
         className="popup-container"
+        style={{ top: '20%' }}
       >
-        <img src={imgPopup["bg_popup.png"]} className={`bg-popup-${typePopup}`} />
-        <img src={imgPopup[`${typePopup}.png`]} className={`title-popup-${typePopup}`} />
+        <img
+          src={imgPopup["bg_popup.png"]}
+          className={`bg-popup-${typePopup}`}
+        />
+        <img
+          src={imgPopup[`${typePopup}.png`]}
+          className={`title-popup-${typePopup}`}
+        />
         {printPopup()}
       </Modal>
     </>

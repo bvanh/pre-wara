@@ -36,7 +36,7 @@ const Page2 = () => {
               className="frame-feature"
             />
             <img
-              src={imgPage2[`feature_${isFeature}.png`]}
+              src={imgPage2[`featrue_${isFeature}.png`]}
               className="img-feature"
             />
             <img

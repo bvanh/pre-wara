@@ -34,9 +34,10 @@ const Page1 = (props) => {
   });
   const [showMenu, setShowMenu] = useState(true);
   const [stepRw, setStepRw] = useState(null);
-  const { isRun, show, isMuted } = videoIndex;
+  const { isRun, isMuted } = videoIndex;
+  const { typePopup } = modalIndex;
   const offModal = () => {
-    setModalIndex({ ...modalIndex, visible: false });
+    setModalIndex({ ...modalIndex, visible: false, typePopup: typePopup });
   };
   const onModal = (val) => {
     setModalIndex({ ...modalIndex, visible: true, typePopup: val });
@@ -106,7 +107,7 @@ const Page1 = (props) => {
               ]
             }
             onMouseOver={() => setStepRw(val.id)}
-            onMouseLeave={()=>setStepRw(null)}
+            onMouseLeave={() => setStepRw(null)}
             width="100%"
           />
           <div
@@ -129,7 +130,7 @@ const Page1 = (props) => {
                 <th>Ruby</th>
               </tr>
               <tr>
-                <td>{val.step}</td>
+                <td>{val.step === 0 ? 1000 : val.step}</td>
                 <td>
                   {val.gold}K x{" "}
                   <img
@@ -234,7 +235,11 @@ const Page1 = (props) => {
           alt="character-1"
         />
       </Row>
-      <FormRegister modalIndex={modalIndex} offModal={offModal} />
+      <FormRegister
+        modalIndex={modalIndex}
+        offModal={offModal}
+        setModalIndex={setModalIndex}
+      />
     </div>
   );
 };

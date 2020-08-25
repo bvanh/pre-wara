@@ -1,6 +1,7 @@
 $medium-width: 1200px;
 $large-width: 1600px;
 $mobile-width: 992px;
+$mobile-small-width: 700px;
 $medium-width2: 1330px;
 @mixin medium-width {
   @media (min-width: #{$medium-width}) {
@@ -24,6 +25,11 @@ $medium-width2: 1330px;
 }
 @mixin isMobile {
   @media (max-width:#{$mobile-width}) {
+    @content;
+  }
+}
+@mixin isMobileSmall {
+  @media (max-width:#{$mobile-small-width}) {
     @content;
   }
 }
@@ -111,6 +117,10 @@ $medium-width2: 1330px;
         top: -40px;
         width: 25%;
         z-index: 2;
+        @include isMobileSmall(){
+          top: 0;
+          left: 0;
+        }
       }
     }
     .menu {
@@ -143,6 +153,7 @@ $medium-width2: 1330px;
         width: 100%;
         position: absolute;
         top: -75px;
+        left: 0;
         @include medium-width() {
           top: -100px;
         }
@@ -234,6 +245,9 @@ $medium-width2: 1330px;
         height: 590px;
         padding: 10rem 0 0 0;
       }
+      @include isMobile() {
+        top: -18%;
+      }
       .progress-container {
         display: flex;
         flex-direction: row;
@@ -286,9 +300,15 @@ $medium-width2: 1330px;
       top: -45px;
       width: 315px;
       left: 90px;
+      @include isMobileSmall() {
+        width: 330px;
+      }
       .step-bg {
         width: 100%;
-        height: 160px;
+        height: 163px;
+        @include isMobileSmall() {
+          height: 170px;
+        }
       }
       .step-bg-large {
         height: 180px;
@@ -344,10 +364,17 @@ $medium-width2: 1330px;
   .bg-popup-register {
     width: 100%;
     height: 345px;
+    @include isMobile() {
+      height: 245px;
+    }
   }
   .bg-popup-rule {
     width: 100%;
     height: 420px;
+  }
+  .bg-popup-success {
+    width: 100%;
+    height: 185px;
   }
   div {
     background-color: transparent;
@@ -368,11 +395,26 @@ $medium-width2: 1330px;
         left: 30%;
         top: -6%;
       }
+      .title-popup-success {
+        position: absolute;
+        width: 40%;
+        left: 30%;
+        top: -12%;
+      }
+      .alert-success {
+        position: absolute;
+        top: 40%;
+        left: 27%;
+        color: white;
+      }
       form {
         position: absolute;
         top: 0;
         width: 100%;
         padding: 20% 3rem;
+        @include isMobile() {
+          padding: 11% 3rem 0;
+        }
         .ant-form-item-label {
           text-align: start;
           label {
@@ -396,6 +438,7 @@ $medium-width2: 1330px;
         p {
           margin-bottom: 0.5rem;
           color: white;
+          font-size: 14.5px;
         }
       }
     }

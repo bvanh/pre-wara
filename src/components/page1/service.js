@@ -4,6 +4,7 @@ const listPopup = {
   REGISTER: "register",
   STEP: "step",
   RULE: "rule",
+  SUCCESS:'success'
 };
 const listBtnHeader = [
   { id: 2, name: "dk_btn.png", link: "https://clappigames.com/news" },
