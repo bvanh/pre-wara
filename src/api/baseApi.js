@@ -29,6 +29,10 @@ const sendInfo = (
     .post(api.SEND_MAIL, { ...params })
     .then(async (res) => {
       await offModal();
+      window.fbq("track", "CompleteRegistration", {
+        value: params.mail,
+        currency: "email",
+      });
       setModalIndex({ ...modalIndex, visible: true, typePopup: SUCCESS });
       setValidateIndex({
         status: "",
