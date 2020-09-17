@@ -302,16 +302,16 @@ $medium-width2: 1330px;
     .step-rewards {
       position: absolute;
       top: -45px;
-      width: 315px;
+      width: 415px;
       left: 90px;
       @include isMobileSmall() {
-        width: 330px;
+        width: 360px;
       }
       .step-bg {
         width: 100%;
-        height: 163px;
+        height: 155px;
         @include isMobileSmall() {
-          height: 170px;
+          height: 150px;
         }
       }
       .step-bg-large {
@@ -319,7 +319,7 @@ $medium-width2: 1330px;
       }
       .step-title {
         width: 50%;
-        top: -10%;
+        top: -16%;
         position: absolute;
         left: 26%;
       }
@@ -335,6 +335,9 @@ $medium-width2: 1330px;
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
+        @include isMobileSmall(){
+          font-size: 12px;
+        }
       }
       th {
         text-align: center;

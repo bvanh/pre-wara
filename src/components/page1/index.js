@@ -126,7 +126,7 @@ const Page1 = (props) => {
             <table>
               <thead>
                 <tr>
-                  <th>Email</th>
+                  <th style={{width:"40%"}}>Mail đã đăng ký</th>
                   <th>Gold</th>
                   <th>Ruby</th>
                 </tr>
@@ -134,7 +134,7 @@ const Page1 = (props) => {
               <tbody>
                 <tr>
                   {/* <td>{val.step === 0 ? 1000 : val.step}</td> */}
-                  <td>{currentMail}</td>
+                  <td style={{textAlign:'center'}}>{currentMail}</td>
                   <td>
                     {val.gold}K x{" "}
                     <img
