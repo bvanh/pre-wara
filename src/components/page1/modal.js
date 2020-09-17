@@ -130,7 +130,6 @@ const FormRegister = (props) => {
             </Form.Item>
           </Form>
         );
-
       case RULE:
         return (
           <div className="popup-rule">
@@ -161,7 +160,6 @@ const FormRegister = (props) => {
         return(
         <h2 className='alert-success'>Gửi thông tin thành công!</h2>
         )
-        break;
     }
   };
   return (

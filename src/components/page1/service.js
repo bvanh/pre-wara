@@ -86,7 +86,7 @@ const listProgress = [
     id: 1,
     gold: 100,
     ruby: 25,
-    step: 0,
+    step: 1000,
     srcStep: "1",
     srcRw: "rw_false",
     srcRwPass: "rw_true",
