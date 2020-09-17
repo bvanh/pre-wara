@@ -133,7 +133,8 @@ const Page1 = (props) => {
               </thead>
               <tbody>
                 <tr>
-                  <td>{val.step === 0 ? 1000 : val.step}</td>
+                  {/* <td>{val.step === 0 ? 1000 : val.step}</td> */}
+                  <td>{currentMail}</td>
                   <td>
                     {val.gold}K x{" "}
                     <img
