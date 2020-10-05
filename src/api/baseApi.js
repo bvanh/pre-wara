@@ -2,7 +2,6 @@ import api from "./api";
 import axios from "axios";
 import { listPopup } from "../components/page1/service";
 const { SUCCESS } = listPopup;
-
 const baseApi = axios.create({
   baseURL: `${api.ROOT}`,
 });
