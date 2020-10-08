@@ -5,7 +5,7 @@ import { validateEmail, validatePhone } from "../../ultils/validate";
 import { imgPopup } from "../../ultils/importImg";
 import { listPopup } from "./service";
 import { getInfo } from "../../api/baseApi";
-const {REGISTER, RULE,} = listPopup;
+const { REGISTER, RULE } = listPopup;
 const layout = {
   labelCol: {
     span: 6,
@@ -22,7 +22,7 @@ const tailLayout = {
 };
 const FormRegister = (props) => {
   const { visible, typePopup } = props.modalIndex;
-  const { offModal, setModalIndex, modalIndex,setCurrentMail } = props;
+  const { offModal, setModalIndex, modalIndex, setCurrentMail } = props;
   const [validateIndex, setValidateIndex] = useState({
     status: "",
     warningStatus: "warning",
@@ -136,6 +136,7 @@ const FormRegister = (props) => {
       case RULE:
         return (
           <div className="popup-rule">
+            <p>Thời gian dự kiến : 23:59 20/10/2020.</p>
             <p>Hướng dẫn đăng ký sớm nhận quà :</p>
             <p>- Bước 1 : Click vào ô ĐĂNG KÝ SỚM tại trang web</p>
             <p> - Bước 2 : Điền Email và Số điện thoại theo yêu cầu tại đó</p>
@@ -160,9 +161,7 @@ const FormRegister = (props) => {
           </div>
         );
       default:
-        return(
-        <h2 className='alert-success'>Gửi thông tin thành công!</h2>
-        )
+        return <h2 className="alert-success">Gửi thông tin thành công!</h2>;
     }
   };
   return (
@@ -174,7 +173,7 @@ const FormRegister = (props) => {
         onCancel={offModal}
         footer={false}
         className="popup-container"
-        style={{ top: '20%' }}
+        style={{ top: "20%" }}
       >
         <img
           src={imgPopup["bg_popup.png"]}
