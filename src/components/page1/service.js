@@ -8,11 +8,11 @@ const listPopup = {
 };
 const listBtnHeader = [
   { id: 2, name: "dk_btn.png", link: "https://clappigames.com/news" },
-  { id: 3, name: "home_btn.png", link: "https://wara.lussom.com/" },
+  { id: 3, name: "home_btn.png", link: "https://wara.lussom.vn" },
   { id: 4, name: "fan_btn.png", link: "https://www.facebook.com/WARAVN/" },
 ];
 const listTabMenu = [
-  { id: 12, link: "https://wara.clappigames.com" },
+  { id: 12, link: "https://wara.lussom.vn" },
   { id: 13, link: "https://clappigames.com/news" },
   { id: 14, link: "https://www.facebook.com/WARAVN/" },
 ];
