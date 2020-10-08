@@ -4,7 +4,8 @@ import { sendInfo } from "../../api/baseApi";
 import { validateEmail, validatePhone } from "../../ultils/validate";
 import { imgPopup } from "../../ultils/importImg";
 import { listPopup } from "./service";
-const { REGISTER, RULE,} = listPopup;
+import { getInfo } from "../../api/baseApi";
+const {REGISTER, RULE,} = listPopup;
 const layout = {
   labelCol: {
     span: 6,
@@ -21,7 +22,7 @@ const tailLayout = {
 };
 const FormRegister = (props) => {
   const { visible, typePopup } = props.modalIndex;
-  const { offModal, setModalIndex, modalIndex } = props;
+  const { offModal, setModalIndex, modalIndex,setCurrentMail } = props;
   const [validateIndex, setValidateIndex] = useState({
     status: "",
     warningStatus: "warning",
@@ -36,6 +37,7 @@ const FormRegister = (props) => {
         if (validateEmail(mail)) {
           sendInfo(
             setValidateIndex,
+            setCurrentMail,
             validateIndex,
             values,
             setModalIndex,
@@ -52,6 +54,7 @@ const FormRegister = (props) => {
       if (validateEmail(mail)) {
         sendInfo(
           setValidateIndex,
+          setCurrentMail,
           validateIndex,
           values,
           setModalIndex,

@@ -18,6 +18,7 @@ const getInfo = () => {
 };
 const sendInfo = (
   setValidateIndex,
+  setCurrentMail,
   validateIndex,
   params,
   setModalIndex,
@@ -31,6 +32,9 @@ const sendInfo = (
       window.fbq("track", "CompleteRegistration", {
         value: params.mail,
         currency: "email",
+      });
+      getInfo().then((res) => {
+        setCurrentMail(res.currentMail);
       });
       setModalIndex({ ...modalIndex, visible: true, typePopup: SUCCESS });
       setValidateIndex({

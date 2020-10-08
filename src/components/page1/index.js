@@ -22,7 +22,7 @@ import FormRegister from "./modal";
 
 const { REGISTER, RULE } = listPopup;
 const Page1 = (props) => {
-  const { scrollToPage2, currentMail } = props;
+  const { scrollToPage2, currentMail, setCurrentMail } = props;
   const [modalIndex, setModalIndex] = useState({
     visible: false,
     typePopup: RULE,
@@ -246,6 +246,7 @@ const Page1 = (props) => {
         modalIndex={modalIndex}
         offModal={offModal}
         setModalIndex={setModalIndex}
+        setCurrentMail={setCurrentMail}
       />
     </div>
   );

@@ -8,20 +8,20 @@ import Footer from "./page2/footer";
 
 const PageBrowser = () => {
   const inputEl = useRef(null);
-  const [currentMail, setCurrretMail] = useState(null);
+  const [currentMail, setCurrentMail] = useState(null);
   const scrollToPage2 = () => {
     inputEl.current.scrollToSlide(1);
   };
   useEffect(() => {
     getInfo().then((res) => {
-      setCurrretMail(res.currentMail);
+      setCurrentMail(res.currentMail);
     });
   }, []);
   return (
     <div className="Page-container">
       <FullPage scrollMode={isMobile ? "normal" : "full-page"} ref={inputEl}>
         <Slide>
-          <Page1 scrollToPage2={scrollToPage2} currentMail={currentMail} />
+          <Page1 scrollToPage2={scrollToPage2} currentMail={currentMail} setCurrentMail={setCurrentMail} />
         </Slide>
         <Slide>
           <Page2 />
