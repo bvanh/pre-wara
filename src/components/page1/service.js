@@ -132,6 +132,14 @@ const printPrBar = (currentMail, val, index) => {
         );
       }
     } else {
+      if (currentMail >= val.step) {
+        return (
+          <img
+            src={imgProgress[`${val.srcPrPass}.png`]}
+            className="progress-step"
+          />
+        );
+      }
       if (
         currentMail > listProgress[index + 1].step &&
         currentMail < listProgress[index - 1].step
@@ -147,14 +155,6 @@ const printPrBar = (currentMail, val, index) => {
         return (
           <img
             src={imgProgress[`${val.srcPrEmtry}.png`]}
-            className="progress-step"
-          />
-        );
-      }
-      if (currentMail >= listProgress[index - 1].step) {
-        return (
-          <img
-            src={imgProgress[`${val.srcPrPass}.png`]}
             className="progress-step"
           />
         );
