@@ -141,7 +141,7 @@ const printPrBar = (currentMail, val, index) => {
         );
       }
       if (
-        currentMail > listProgress[index + 1].step &&
+        currentMail >= listProgress[index + 1].step &&
         currentMail < listProgress[index - 1].step
       ) {
         return (
