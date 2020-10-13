@@ -34,7 +34,7 @@ const FormRegister = (props) => {
     const { mail, phone } = values;
     if (phone && phone !== "") {
       if (validatePhone(phone)) {
-        if (validateEmail(mail)) {
+        if (validateEmail(mail.trim())) {
           sendInfo(
             setValidateIndex,
             setCurrentMail,
@@ -51,7 +51,7 @@ const FormRegister = (props) => {
         alertErrPhone();
       }
     } else {
-      if (validateEmail(mail)) {
+      if (validateEmail(mail.trim())) {
         sendInfo(
           setValidateIndex,
           setCurrentMail,
