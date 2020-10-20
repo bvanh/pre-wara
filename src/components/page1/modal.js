@@ -136,7 +136,7 @@ const FormRegister = (props) => {
       case RULE:
         return (
           <div className="popup-rule">
-            <p>Thời gian dự kiến : 23:59 20/10/2020.</p>
+            <p>Thời gian dự kiến : 23:59 27/10/2020.</p>
             <p>Hướng dẫn đăng ký sớm nhận quà :</p>
             <p>- Bước 1 : Click vào ô ĐĂNG KÝ SỚM tại trang web</p>
             <p> - Bước 2 : Điền Email và Số điện thoại theo yêu cầu tại đó</p>
