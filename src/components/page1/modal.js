@@ -84,54 +84,55 @@ const FormRegister = (props) => {
     switch (typePopup) {
       case REGISTER:
         return (
-          <Form
-            {...layout}
-            name="basic"
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-          >
-            <Form.Item
-              label="Email"
-              name="mail"
-              validateStatus={status}
-              help={textHelp}
-              style={{ paddingBottom: ".5rem" }}
-            >
-              <Input
-                onMouseDown={() =>
-                  setValidateIndex({
-                    ...validateIndex,
-                    status: "",
-                    textHelp: null,
-                  })
-                }
-              />
-            </Form.Item>
-            <Form.Item
-              label="Số điện thoại"
-              name="phone"
-              help={textHelpPhone}
-              validateStatus={warningStatus}
-              style={{ paddingBottom: ".5rem" }}
-            >
-              <Input
-                onMouseDown={() =>
-                  setValidateIndex({
-                    ...validateIndex,
-                    warningStatus: "",
-                    textHelpPhone: null,
-                  })
-                }
-              />
-            </Form.Item>
-            <Form.Item {...tailLayout}>
-              <Button type="primary" htmlType="submit">
-                Gửi
-              </Button>
-            </Form.Item>
-          </Form>
+          <h2 className='popup-rule' style={{color:"white"}}>Sự kiện đã kết thúc.</h2>
+          // <Form
+          //   {...layout}
+          //   name="basic"
+          //   initialValues={{
+          //     remember: true,
+          //   }}
+          //   onFinish={onFinish}
+          // >
+          //   <Form.Item
+          //     label="Email"
+          //     name="mail"
+          //     validateStatus={status}
+          //     help={textHelp}
+          //     style={{ paddingBottom: ".5rem" }}
+          //   >
+          //     <Input
+          //       onMouseDown={() =>
+          //         setValidateIndex({
+          //           ...validateIndex,
+          //           status: "",
+          //           textHelp: null,
+          //         })
+          //       }
+          //     />
+          //   </Form.Item>
+          //   <Form.Item
+          //     label="Số điện thoại"
+          //     name="phone"
+          //     help={textHelpPhone}
+          //     validateStatus={warningStatus}
+          //     style={{ paddingBottom: ".5rem" }}
+          //   >
+          //     <Input
+          //       onMouseDown={() =>
+          //         setValidateIndex({
+          //           ...validateIndex,
+          //           warningStatus: "",
+          //           textHelpPhone: null,
+          //         })
+          //       }
+          //     />
+          //   </Form.Item>
+          //   <Form.Item {...tailLayout}>
+          //     <Button type="primary" htmlType="submit">
+          //       Gửi
+          //     </Button>
+          //   </Form.Item>
+          // </Form>
         );
       case RULE:
         return (
